@@ -59,20 +59,22 @@ export const AppRouter = () => {
   // swalClose();
   // if(!isLoggedIn) return;
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/auth/*" element={
-          <PublicRoutes>
-            <AuthRoutes />
-          </PublicRoutes>
-        } />
+    <div className='home'>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/auth/*" element={
+            <PublicRoutes>
+              <AuthRoutes />
+            </PublicRoutes>
+          } />
 
-        <Route path="/*" element={
-          <PrivateRoutes>
-            <AppRoutes />
-          </PrivateRoutes>
-        } />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/*" element={
+            <PrivateRoutes>
+              <AppRoutes />
+            </PrivateRoutes>
+          } />
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
