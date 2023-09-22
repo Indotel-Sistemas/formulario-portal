@@ -9,9 +9,11 @@ export const AuthScreen = () => {
 
     return (
         <div className='auth_container'>
-            <h1 className='auth_title'>Titulo</h1>
+            <h1 className='auth_title'>Recepcion de ofertas</h1>
             <div className='auth_main'>
                 <div className='auth_info'>
+                    <img src=''/>
+                    <small className='mb-3'>¿No tienes cuenta?</small>
                     <button className='btn btn-primary'> Registrar</button>
                 </div>
                 <div className='auth_action'>
