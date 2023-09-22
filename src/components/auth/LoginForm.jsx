@@ -11,7 +11,7 @@ export const LoginForm = () => {
         <input className='auth_input form-control'/>
 
         <label className="form_label mt-3" htmlFor='password'>Contraseña</label>
-        <input className='auth_input form-control'/>
+        <input type="password" className='auth_input form-control'/>
 
         <button className='btn btn-danger mt-4'>Ingresar</button>
 

@@ -1,11 +1,25 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { LoginForm } from './LoginForm';
 import { RegisterForm } from './RegisterForm';
 import '../../styles/authStyles.css'
 
 export const AuthScreen = () => {
+
+    const navigate = useNavigate()
     const { authAction } = useParams();
+
+    const handleNavigate = () => {
+        if(authAction === 'register') {
+           navigate('/')
+        }else {
+           navigate('/auth/register')
+           console.log('hi')
+
+       }
+    };
+
+    
 
     return (
         <div className='auth_container'>
@@ -13,9 +27,13 @@ export const AuthScreen = () => {
             <div className='auth_main'>
                 <div className='auth_info'>
                     <img src=''/>
-                    <small className='mb-3'>¿No tienes cuenta?</small>
-                    <button className='btn btn-primary'> Registrar</button>
+                    <small className='mb-3'>{authAction === 'register'? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}</small>
+                    <button className='btn btn-primary' 
+                    onClick={handleNavigate} > {authAction === 'register'? 'Ingresar' : 'Registrar'}</button>
                 </div>
+
+                <div className="divisor_line"></div>
+
                 <div className='auth_action'>
                     {(authAction === 'register')
                         ? (<RegisterForm />)
