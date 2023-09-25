@@ -1,7 +1,17 @@
 import React from 'react'
+import OfertasScreen from '../ofertas/OfertasScreen'
 
 export const DashboardScreen = () => {
+
+
+  
   return (
-    <div>DashboardScreen</div>
+    
+    
+      <div className='dashboard_container'>
+      <OfertasScreen/>
+
+      </div>
+    
   )
 }

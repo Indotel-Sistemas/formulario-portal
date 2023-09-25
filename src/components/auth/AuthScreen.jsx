@@ -11,15 +11,12 @@ export const AuthScreen = () => {
 
     const handleNavigate = () => {
         if(authAction === 'register') {
-           navigate('/')
+           navigate('/');
         }else {
-           navigate('/auth/register')
-           console.log('hi')
-
+           navigate('/auth/register');
        }
     };
 
-    
 
     return (
         <div className='auth_container'>
@@ -42,5 +39,5 @@ export const AuthScreen = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }

@@ -3,7 +3,6 @@ import React from 'react'
 export const RegisterForm = () => {
   return (
     <>
-
  <div  className='login_container'>
     <div className='login_form'>
       <p className='auth_title'>Registre su empresa</p>
