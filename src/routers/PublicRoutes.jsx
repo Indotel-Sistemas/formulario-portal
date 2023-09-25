@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 export const PublicRoutes = ({ children }) => {
     // const [auth] = useAuthStore(state => [state.auth]);
     
-    return true
+    return false
         ? <Navigate to="/" />
         : children
 }
