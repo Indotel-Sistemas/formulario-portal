@@ -10,7 +10,6 @@ export const AuthScreen = () => {
     const { authAction } = useParams();
 
     const handleNavigate = () => {
-        console.log('hola')
         if(authAction === 'register') {
            navigate('/');
         }else {

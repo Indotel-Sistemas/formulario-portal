@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { RegistrarUsuario } from '../../data/auth/auth';
+import React, { useEffect, useState } from 'react'
+import { RegistrarUsuario, checkUsuario } from '../../data/auth/auth';
 import { swalError, swalLoading } from '../../helpers/sweetAlerts';
 
 
@@ -12,28 +12,56 @@ export const RegisterForm = () => {
     password:"",
     terminos:false,
     //
-    passwordInfo:false
+    passwordInfo:false,
+    validForm:false,
+    
 
 })
 
+const handleValidation = () => {
+  const invalidForm = {valid: false}
+  if(Object.values(state).includes("")) return {...invalidForm, msg:'Es necesario llenar todos los campos'}
+
+  if(state.empresa.length <= 5) return {...invalidForm, msg:'Ingrese un nombre de empresa valido' }
+
+
+  if(state.usuario.length <= 3) return {...invalidForm, msg:'Ingrese un nombre de usuario valido' }
+  
+  if(state.password.length <= 6) return {...invalidForm, msg:'La contraseña debe contener mas de 6 caracteres' }
+  
+
+  if(!state.terminos) return {...invalidForm, msg:'Debe aceptar los terminos y condiciones para crear su cuenta' }
+  
+  
+  return {valid: true}
+  
+};
 
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if(Object.values(state).includes("")) return swalError('Es necesario llenar todos los campos');
-  if(state.empresa.length <= 5) return swalError("Ingrese un nombre de empresa valido")
-  if(state.usuario.length <= 3) return swalError("Ingrese un nombre de usuario valido")
-  if(state.password.length <= 6) return swalError("La contraseña debe contener mas de 6 caracteres")
-  if(!state.terminos) return swalError("Debe aceptar los terminos y condiciones para crear su cuenta");
+  const {valid, msg} = handleValidation();
 
-
-
+  if(!valid) return swalError(msg);
+  
   const res = await RegistrarUsuario(state);
 
-  if(res.status !== 200) return swalError('error')
+  if(res.status !== 200) return swalError('Error creando el usuario')
   console.log(res)
 
 }
+
+
+const checkUsuario = async () => {
+  const res = await checkUsuario({usuario:state.usuario})
+  console.log(res)
+  
+}
+useEffect(() => {
+  if(!state.usuario) return
+  checkUsuario()
+}, [])
+
 
 
   
