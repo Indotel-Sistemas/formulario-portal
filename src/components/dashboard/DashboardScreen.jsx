@@ -1,11 +1,11 @@
-import OfertasScreen from '../ofertas/OfertasScreen'
 import { swalClose } from '../../helpers/sweetAlerts'
+import LicitacionesScreen from '../licitaciones/LicitacionesScreen';
 
 export const DashboardScreen = () => {
   swalClose();
   return (
     <div className='dashboard_container'>
-      <OfertasScreen />
+      <LicitacionesScreen />
     </div>
 
   )
