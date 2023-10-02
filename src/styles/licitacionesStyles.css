@@ -2,7 +2,7 @@
     padding: 0 2rem;
 
 }
-.licitaciones_container {
+.licitaciones_main .licitaciones_container {
     width: 100%;
     /* height: 100vh; */
     /* text-align: center; */
@@ -12,12 +12,12 @@
     /* gap: 1.5rem; */
 }
 
-.title {
+.licitaciones_main .title {
     font-size: 3.0rem;
     font-weight: bold;
 }
 
-.licitacion {
+.licitaciones_main .licitacion {
     width: 45rem;
     /* height: 18.0rem; */
     border-radius: .5rem;
@@ -25,31 +25,57 @@
     text-align: justify;
     /* padding: 1.5rem; */
     box-shadow: rgba(0, 0, 0, 0.24) .0rem .3rem .8rem;
+    margin-bottom: 1.5rem;
 
 }
 
-.licitacion_title {
+.licitaciones_main .licitacion_title {
     display: flex;
     width: 100%;
     justify-content: space-between;
     font-weight: bold;
 }
-.licitacion_description {
+.licitaciones_main .licitacion_description {
     font-size: 1.4rem;
     color: var(--muted-gray);
     margin-bottom: 2rem;
 }
 
-.licitacion_status_active {
+.licitaciones_main .licitacion_status_active {
     height: 1.0rem;
     width: 1.0rem;
     border-radius: 50%;
     background-color: green;
 }
 
-.licitacion_status_inactive {
+.licitaciones_main .licitacion_status_inactive {
     height: 1.0rem;
     width: 1.0rem;
     border-radius: 50%;
     background-color: red;
+}
+
+
+
+/* Single Licitaction Styles */
+
+.licitacion_container {
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.0rem;
+
+
+}
+
+.licitacion_container .licitacion_title {
+    font-size: 23px;
+    font-weight: bold;
+
+}
+
+.licitacion_container .licitacion_description {
+    margin-bottom: 3.5rem;
 }

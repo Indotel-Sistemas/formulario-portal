@@ -19,7 +19,16 @@ export const checkUsuario = async (data) => {
 }
 export const login = async (data) => {
     try {
-        const res = await axios.post('http://localhost:8066/api/autenticacion/login',data)
+        const res = await axios.post('http://192.168.100.60:8066/api/autenticacion/login',data)
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const getLicitacion = async () => {
+    try {
+        const res = await axios.get('http://192.168.100.60:8066/api/procesos')
         return res;
     } catch (error) {
         return error;

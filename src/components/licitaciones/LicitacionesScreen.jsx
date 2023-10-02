@@ -5,27 +5,22 @@ import { useEffect } from 'react'
 
 const LicitacionesScreen = () => {
     const navigate = useNavigate()
-    const [ setLicitacion, cleanLicitacion ] = useLicitacionesStore( store => [store.setLicitacion, store.cleanLicitacion] )
-    const licitaciones = [
-        {
-            title: 'licitacion TAL',
-            description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-         Lorem Ipsum has been the industry`,
-            isActive: true,
-        },
-        {
-            title: 'licitacion TALaaaaa',
-            description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-         Lorem Ipsum has been the industry`,
-            isActive: false,
-        }
-    ]
-
+    const [ licitaciones,setLicitacion, cleanLicitacion , getLicitaciones ] = useLicitacionesStore( store => 
+        [store.licitaciones,
+        store.setLicitacion, 
+        store.cleanLicitacion,
+        store.getLicitaciones])
+    
+        console.log(licitaciones)
+    
+  
+    
     const handleOpenlicitacion = (licitacion) => {
         setLicitacion(licitacion)
         navigate('/licitacion')
     }
     useEffect(() => {
+        getLicitaciones();
         cleanLicitacion()
     }, [])
     
@@ -35,15 +30,15 @@ const LicitacionesScreen = () => {
             <div className='licitaciones_container'>
                 {
                     licitaciones.map((licitacion) => (
-                        <div key={licitacion.title} className='licitacion'>
+                        <div key={licitacion.NOMBRE} className='licitacion'>
                             <div className='licitacion_title'>
-                                <p>{licitacion.title}</p>
-                                <div className={licitacion.isActive ? 'licitacion_status_active' : 'licitacion_status_inactive'}></div>
+                                <p>{licitacion.NOMBRE}</p>
+                                <div className={licitacion.STATUS ? 'licitacion_status_active' : 'licitacion_status_inactive'}></div>
                             </div>
-                            <p className='licitacion_description'>{licitacion.description}</p>
+                            <p className='licitacion_description'>{licitacion.DESCRIPCION}</p>
                             <button
                                 onClick={() => { handleOpenlicitacion(licitacion)}}
-                                className='btn btn-primary w-100' disabled={!licitacion.isActive}>Ver licitacion</button>
+                                className='btn btn-primary w-100' disabled={!licitacion.STATUS}>Ver licitacion</button>
                         </div>
                     ))
                 }
