@@ -1,12 +1,10 @@
-import React from 'react';
 import { Navigate } from 'react-router-dom';
-// import { useAuthStore } from '../store/auth';
-// import { AuthContext } from '../auth/AuthContext';
+import { useAuthStore } from '../store/auth';
 
 export const PrivateRoutes = ({ children }) => {
     // const {auth} = useSelector(state=> state);
-    // const [ auth ] = useAuthStore(state => [state.auth])
-    return false
-    ? children
+    const [auth] = useAuthStore(state => [state.auth]);
+    return !!auth.usuario
+        ? children
         : <Navigate to="/auth/login" />
 }

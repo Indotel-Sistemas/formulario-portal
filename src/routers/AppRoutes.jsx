@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { AuthScreen } from '../components/auth/AuthScreen'
+import { DashboardScreen } from '../components/dashboard/DashboardScreen'
+import { OfertaScreen } from '../components/ofertas/OfertaScreen'
 
 export const AppRoutes = () => {
 
@@ -10,7 +11,11 @@ export const AppRoutes = () => {
       <Routes>
         <Route
           path="/"
-          element={<AuthScreen />}
+          element={<DashboardScreen />}
+        />
+        <Route
+          path="/oferta"
+          element={<OfertaScreen />}
         />
       </Routes>
     </div>

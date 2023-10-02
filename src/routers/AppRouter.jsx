@@ -21,11 +21,18 @@ import { PublicRoutes } from './PublicRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
 import { AppRoutes } from './AppRoutes';
 import { AuthRoutes } from './AuthRoutes';
+import { useAuthStore } from '../store/auth';
 
 
 export const AppRouter = () => {
+  
   // const [setDataStore, setColeccionStore] = useDataStore(state => [state.setDataStore, state.setColeccionStore]);
-
+  const [ checkLoginSesion ] = useAuthStore( store => [store.checkLoginSesion] );
+  
+  useEffect(() => {
+    checkLoginSesion();
+  }, [])
+  
   // const [checkingAuth, setCheckingAuth] = useState(true);
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 

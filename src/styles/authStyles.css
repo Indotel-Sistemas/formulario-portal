@@ -1,4 +1,4 @@
-.auth_container{
+.auth_container {
     height: 100vh;
     display: grid;
     place-items: center;
@@ -10,22 +10,22 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-  
-    
+
+
 }
 
 .auth_container .auth_main .divisor_line {
-     border-left: 1px solid lightgray;
-      height: 500px;
-      position:absolute;
-      left: 50%;
+    border-left: 1px solid lightgray;
+    height: 500px;
+    position: absolute;
+    left: 50%;
 }
 
 .auth_container .auth_main .auth_info {
     display: flex;
     flex-direction: column;
     text-align: center;
-    
+
 }
 
 .login_container .login_form .auth_title {
@@ -35,12 +35,22 @@
 
 }
 
+.login_container .login_form .form_input-container {
+    margin-bottom: .5rem;
+}
+
 .login_container .login_form .auth_input {
     height: 35px;
 }
 
 .login_container .login_form .form_label {
-    font-weight: bold;
+    /* font-weight: bold; */
+    color: var(--dark-gray);
+    font-size: 1.4rem;
+}
+
+.login_container .login_form .form_button {
+    margin-top: 2.5rem;
 }
 
 
@@ -51,7 +61,7 @@
     }
 
     .auth_container .auth_main .divisor_line {
-    display: none;
-   }
+        display: none;
+    }
 
 }

@@ -17,3 +17,11 @@ export const checkUsuario = async (data) => {
         return error;
     }
 }
+export const login = async (data) => {
+    try {
+        const res = await axios.post('http://localhost:8066/api/autenticacion/login',data)
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
