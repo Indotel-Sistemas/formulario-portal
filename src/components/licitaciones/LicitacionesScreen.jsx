@@ -2,28 +2,26 @@ import { useNavigate } from 'react-router-dom'
 import { useLicitacionesStore } from '../../store/licitaciones'
 import '../../styles/licitacionesStyles.css'
 import { useEffect } from 'react'
+import { useAuthStore } from '../../store/auth'
 
 const LicitacionesScreen = () => {
-    const navigate = useNavigate()
-    const [ licitaciones,setLicitacion, cleanLicitacion , getLicitaciones ] = useLicitacionesStore( store => 
+    const navigate = useNavigate();
+    const [auth] = useAuthStore(store => [store.auth])
+    const [licitaciones, setLicitacion, cleanLicitacion, getLicitaciones] = useLicitacionesStore(store =>
         [store.licitaciones,
-        store.setLicitacion, 
+        store.setLicitacion,
         store.cleanLicitacion,
         store.getLicitaciones])
-    
-        console.log(licitaciones)
-    
-  
-    
+
     const handleOpenlicitacion = (licitacion) => {
         setLicitacion(licitacion)
         navigate('/licitacion')
     }
     useEffect(() => {
-        getLicitaciones();
+        getLicitaciones({usuario: auth.usuario});
         cleanLicitacion()
     }, [])
-    
+
     return (
         <div className='licitaciones_main'>
             <p className='title'>Licitaciones</p>
@@ -37,8 +35,8 @@ const LicitacionesScreen = () => {
                             </div>
                             <p className='licitacion_description'>{licitacion.DESCRIPCION}</p>
                             <button
-                                onClick={() => { handleOpenlicitacion(licitacion)}}
-                                className='btn btn-primary w-100' disabled={!licitacion.STATUS}>Ver licitacion</button>
+                                onClick={() => { handleOpenlicitacion(licitacion) }}
+                                className='btn btn-primary w-100' disabled={!licitacion.STATUS}>Ver licitación</button>
                         </div>
                     ))
                 }

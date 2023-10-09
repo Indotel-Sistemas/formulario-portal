@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { login } from "../data/auth/auth";
+import { login } from "../data/auth";
 
 // import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 // import { auth } from "../firebase/firebase";

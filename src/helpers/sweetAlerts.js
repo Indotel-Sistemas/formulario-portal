@@ -8,7 +8,6 @@ export const swalError = ( mensaje = '' ) => {
             width: 450,
             icon:'error',
             confirmButtonColor: '#A21421',
-            fontSize: '50px'
         })
     }, 500);
 }
