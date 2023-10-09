@@ -35,12 +35,13 @@ export const LicitacionScreen = () => {
     if (fileInput.files.length === 0) return swalError('Ningún archivo seleccionado')
     if (fileInput.files.length > 2) return swalError('Excede el número de archivos. Volver a seleccionar')
     const formData = new FormData();
-
-    for (let i = 0; i < fileInput.files.length; i++) {
-      formData.append("files", fileInput.files[i])
+  for (let i = 0; i < fileInput.files.length; i++) {
+      console.log(fileInput.files[i])
+      formData.append("files", fileInput.files[i], `${auth.empresa}-${fileInput.files[i].name}`)
     }
     formData.append("usuario", auth.usuario)
-    formData.append("idProceso", licitacion.ID)
+    formData.append("idProceso", licitacion.ID);
+
     await postOfertas(formData)
   }
 
