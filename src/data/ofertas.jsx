@@ -27,3 +27,12 @@ export const getUsuarioOfertas = async (data) => {
         return error;
     }
 }
+
+export const deleteUsuarioOferta = async (data) => {
+    try {
+        const res = await axios.post(`${source}/api/files/deleteFile`, data)
+        return res;
+    } catch (error) {
+        return error;
+    }
+}

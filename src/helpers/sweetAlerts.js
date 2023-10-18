@@ -64,12 +64,14 @@ export const swalConfirmation = (titulo, pregunta) => {
       })
 }
 
-export const swalEliminar = (mensaje) => {
+export const swalEliminar = (titulo, pregunta) => {
     return Swal.fire({
         icon: 'warning',
-        text: mensaje,
+        title:titulo,
+        text: pregunta,
         showCancelButton: true,
         confirmButtonText: `Eliminar`,
+        cancelButtonText: `Cancelar`,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
       }).then((result) => {

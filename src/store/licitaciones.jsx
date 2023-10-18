@@ -15,8 +15,8 @@ export const useLicitacionesStore = create((set) => {
         getLicitaciones: async(data) => {
             const res = await getLicitaciones(data);
             if(res.status !== 200) return { status: res.response.status, msg: res.response.data.msg };
-            
             set(({licitaciones:res.data}))
+            return {status:200}
         },
         setLicitacion: (licitacion) => {
             set({ licitacion: {...licitacion} });

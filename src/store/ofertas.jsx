@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getUsuarioOfertas } from "../data/ofertas";
+import { deleteUsuarioOferta, getUsuarioOfertas } from "../data/ofertas";
 
 export const useOfertasStore = create((set) => {
 
@@ -12,6 +12,11 @@ export const useOfertasStore = create((set) => {
             const res = await getUsuarioOfertas(data);
             if(res.status !== 200) return { status: res.response.status, msg: res.response.data.msg };
             set(({ofertas:res.data.data}))
+            return {status: res.status}
+        },
+        deleteUsuarioOfertaFile: async(data) => {
+            const res = await deleteUsuarioOferta(data);
+            if(res.status !== 200) return { status: res.response.status, msg: res.response.data.msg };
             return {status: res.status}
         },
         // setLicitacion: (licitacion) => {
