@@ -37,12 +37,13 @@ export const LicitacionScreen = () => {
     const fileInput = document.getElementById("files");
     if (fileInput.files.length === 0) return swalError('Ningún archivo seleccionado')
     if (fileInput.files.length > 2) return swalError('Excede el número de archivos. Volver a seleccionar');
+    
     const formData = new FormData();
     for (let i = 0; i < fileInput.files.length; i++) {
-      formData.append("files", fileInput.files[i], `${auth.empresa}-${fileInput.files[i].name}`);
+      formData.append("files", fileInput.files[i], `${auth.empresa}-${licitacion.ID}-${fileInput.files[i].name}`);
 
       const extension = fileInput.files[i].name.split('.')[1].trim().toLowerCase();
-      if(ofertas.map( oferta => oferta.NOMBRE_ARCHIVO.replace(`${auth.empresa}-`,"") ).includes(fileInput.files[i].name)) return swalError('Ya existe un archivo con este nombre. Favor cambiar el nombre o el archivo a subir')
+      if(ofertas.map( oferta => oferta.NOMBRE_ARCHIVO.replace(`${auth.empresa}-${licitacion.ID}-`,"") ).includes(fileInput.files[i].name)) return swalError('Ya existe un archivo con este nombre. Favor cambiar el nombre o el archivo a subir')
       if (!(goodFileExtensions.includes(extension))) validFileExtention = false;
     }
 
@@ -111,7 +112,7 @@ export const LicitacionScreen = () => {
                   {
                     ofertas.map(oferta => (
                       <tr key={oferta.ID}>
-                        <th scope="row">{oferta.NOMBRE_ARCHIVO} </th>
+                        <th scope="row">{oferta.NOMBRE_ARCHIVO.replace(`${auth.empresa}-${licitacion.ID}-`,'')} </th>
                         <td className='text-center'>
                           <small className='text-danger cursor'
                             onClick={() => { handleEliminar(oferta) }}

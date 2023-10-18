@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useAuthStore } from '../../store/auth'
-import { swalCargando, swalError, swalLoading } from '../../helpers/sweetAlerts';
+import { swalError, swalLoading } from '../../helpers/sweetAlerts';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
+  const navigate = useNavigate()
   const [login] = useAuthStore(store => [store.login]);
 
   const [state, setState] = useState({
@@ -23,30 +24,30 @@ export const LoginForm = () => {
 
   }
   return (
-    <>
-      <div className='login_container'>
-        <div className='login_form'>
-          <p className='auth_title'>Bienvenido</p>
-          <form onSubmit={hadleLogin}>
-            <div className="form_input-container">
-              <label className="form_label" htmlFor='usuario'>Usuario</label>
-              <input
-                onChange={(e) => { setState(prevState => ({ ...prevState, usuario: e.target.value })) }}
-                className='auth_input form-control' />
-            </div>
-            <div className="form_input-container">
-              <label className="form_label mt-3" htmlFor='password'>Contraseña</label>
-              <input
-                onChange={(e) => { setState(prevState => ({ ...prevState, password: e.target.value })) }}
-                type="password" className='auth_input form-control' />
-            </div>
+    <div className='login_container'>
+      <div className='login_form'>
+        <p className='auth_title'>Bienvenido</p>
+        <form onSubmit={hadleLogin}>
+          <div className="form_input-container">
+            <label className="form_label" htmlFor='usuario'>Usuario</label>
+            <input
+              onChange={(e) => { setState(prevState => ({ ...prevState, usuario: e.target.value })) }}
+              className='auth_input form-control' />
+          </div>
+          <div className="form_input-container">
+            <label className="form_label mt-3" htmlFor='password'>Contraseña</label>
+            <input
+              onChange={(e) => { setState(prevState => ({ ...prevState, password: e.target.value })) }}
+              type="password" className='auth_input form-control' />
+          </div>
 
-            <button className='btn btn-danger form_button'>Ingresar</button>
+          <button className='btn btn-full btn-danger form_button'>Ingresar</button>
+          <div className='text-center mt-3 text-info'>
+            <small>¿Nuevo usuario? <b className='cursor' onClick={() => { navigate('/auth/register') }}>Completa el registro</b></small>
+          </div>
 
-          </form>
-        </div>
+        </form>
       </div>
-
-    </>
+    </div>
   )
 }

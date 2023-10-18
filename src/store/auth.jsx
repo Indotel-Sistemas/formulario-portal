@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { login } from "../data/auth";
+import { changePassword, login } from "../data/auth";
 
 // import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 // import { auth } from "../firebase/firebase";
@@ -18,13 +18,24 @@ export const useAuthStore = create((set) => {
                 return { status: res.status, msg: res.data.msg }
                 
             } catch (error) {
-                // return { status: error.code, msg: res.data.msg }
+                return { status: error.code}
             }
         },
         checkLoginSesion: () => {
             const sesion = JSON.parse(window.sessionStorage.getItem('auth'))
             if(!sesion) return;
             set(state => ({ auth: { ...state.auth, ...sesion} }));
+
+
+        },
+        changePassword: async(data) => {
+            try {
+                const res = await changePassword(data);
+                if(res.status !== 200) return { status: res.response.status, msg: res.response.data.msg };
+                return { status: res.status, msg: res.data.msg }
+            } catch (error) {
+                return { status: error.code}
+            }
 
 
         }

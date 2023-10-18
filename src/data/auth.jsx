@@ -27,6 +27,15 @@ export const login = async (data) => {
     }
 }
 
+export const changePassword = async (data) => {
+    try {
+        const res = await axios.post(`${source}/api/autenticacion/changePassword`,data)
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const getLicitacion = async () => {
     try {
         const res = await axios.get(`${source}/api/procesos`)
