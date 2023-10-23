@@ -6,7 +6,7 @@ import { AppRouter } from './routers/AppRouter';
 // const source = 'http://192.168.100.60:8066'; //server desarrollo local
 // export const source = 'https://apilin.indotel.gob.do:8067'; //server production local
 
-export const source = 'https://10.79.30.5:8067'; //server production local
+export const source = 'https://apilin.indotel.gob.do:8067'; //server production local
 
 export const App = () => {
   return (
