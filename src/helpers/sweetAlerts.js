@@ -92,7 +92,8 @@ export const swalClose = () => {
 export const swalInfo = (msg, buttonText) => {
     return Swal.fire({
         icon: 'info',
-        text: msg,
+        title: msg,
+        width: 550,
         showCancelButton: false,
         confirmButtonText: buttonText,
         confirmButtonColor: '#218838',

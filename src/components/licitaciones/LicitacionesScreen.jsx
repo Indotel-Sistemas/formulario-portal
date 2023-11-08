@@ -49,7 +49,7 @@ const LicitacionesScreen = () => {
                                         <p>{licitacion.NOMBRE}</p>
                                         <div className={licitacion.STATUS ? 'licitacion_status_active' : 'licitacion_status_inactive'}></div>
                                     </div>
-                                    <p className='licitacion_description'>{licitacion.DESCRIPCION}</p>
+                                    <p className='licitacion_description'>{licitacion.DESCRIPCION}.</p>
                                     <button
                                         onClick={() => { handleOpenlicitacion(licitacion) }}
                                         className='btn btn-primary w-100' disabled={!licitacion.STATUS}>Ver licitación</button>
